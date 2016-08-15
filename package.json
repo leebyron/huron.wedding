@@ -1,0 +1,32 @@
+{
+  "name": "huron.wedding",
+  "version": "1.0.0",
+  "homepage": "http://huron.wedding/",
+  "contributors": [
+    "Lee Byron <lee@leebyron.com> (http://leebyron.com/)",
+    "Ash Huang <ash@ashsmash.com> (http://ashsmash.com/)"
+  ],
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "async-node src/index.js",
+    "postinstall": "node -e \"fs=require('fs');bin=require('./package').bin;ln=(name,cb)=>fs.symlink('../../'+bin[name],'node_modules/.bin/'+name,cb);Object.keys(bin).forEach(name=>ln(name,err=>err&&fs.unlink('node_modules/.bin/'+name,()=>ln(name))))\""
+  },
+  "bin": {
+    "email-blast": "bin/email-blast.js",
+    "populate-db": "bin/populate-db.js"
+  },
+  "engines": {
+    "node": "6.3.1"
+  },
+  "dependencies": {
+    "async-to-gen": "^1.0.0",
+    "body-parser": "1.15.2",
+    "compression": "1.6.2",
+    "ejs": "2.5.1",
+    "express": "4.14.0",
+    "interactive-script": "1.0.1",
+    "pg": "6.0.4",
+    "postmark": "1.2.1"
+  }
+}

@@ -1,0 +1,26 @@
+<html>
+<body>
+  Some Emoji pairs to consider:
+
+  <table cellspacing="50">
+    <% for (var i = 0; i < 30; i++) { %>
+      <tr>
+        <% for (var j = 0; j < 10; j++) { %>
+          <td><%=
+            emoji[Math.floor(Math.random()*emoji.length)][0] +
+            emoji[Math.floor(Math.random()*emoji.length)][0]
+          %></td>
+        <% } %>
+      </tr>
+    <% } %>
+  </table>
+
+  All the (not-crappy) Emoji:
+
+  <dl>
+  <% emoji.forEach(([ glyph, description ]) => { %>
+    <dt><%= glyph %></dt><dd><%= description %></dd>
+  <% }) %>
+  </dl>
+</body>
+</html>
