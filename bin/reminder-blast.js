@@ -16,11 +16,6 @@ const { sendMailBatch } = require('../src/sendMail')
 interactive(async (say, ask) => {
   const { rows } = await pgQuery('SELECT firstname, lastname, partyname, email, emoji FROM invitees WHERE addressprovidedtime IS NULL')
 
-  say('Sending to: ' + rows.map(row => row.email).join())
-  if (!(await ask('Is that correct? ', 'yN'))) {
-    return say('cancelling')
-  }
-
   const groupMap = Object.create(null)
   rows.forEach(row => {
     if (row.email) {
