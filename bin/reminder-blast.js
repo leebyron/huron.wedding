@@ -32,7 +32,7 @@ interactive(async (say, ask) => {
     return { rows, html, text }
   }))
 
-  const subject = 'Save the date!'
+  const subject = 'Reminder: Send us your address!'
   say('SUBJECT: ' + subject)
 
   if (await ask('do you want to see the html template? ', 'Yn')) {
