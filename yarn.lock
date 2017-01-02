@@ -294,9 +294,9 @@ pg-types@1.*:
     postgres-date "~1.0.0"
     postgres-interval "~1.0.0"
 
-pg@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pg/-/pg-6.1.1.tgz#09709597013dea436f5ca67433a5f24131f18742"
+pg@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-6.1.2.tgz#2c896a7434502e2b938c100fc085b4e974a186db"
   dependencies:
     buffer-writer "1.0.1"
     packet-reader "0.2.0"

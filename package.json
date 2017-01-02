@@ -27,7 +27,7 @@
     "ejs": "2.5.5",
     "express": "4.14.0",
     "interactive-script": "1.0.1",
-    "pg": "6.1.1",
+    "pg": "6.1.2",
     "postmark": "1.3.1"
   }
 }
