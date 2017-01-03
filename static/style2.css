@@ -158,7 +158,10 @@ section .header:before {
   line-height: 48px;
 }
 
-.content h3 {
+
+.content h3,
+.content h3 a,
+.content h3 a:hover {
   /* bold weissenhoff */
   font-family: WeissenhofGrotesk;
   font-weight: bold;
@@ -166,8 +169,12 @@ section .header:before {
   line-height: 1.3;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-decoration: none;
   color: #444;
-  margin: 4em 0 0;
+}
+
+.content h3 {
+  margin: 4em 0 1em;
 
   display: inline-block;
   padding-bottom: 2px;
@@ -191,7 +198,7 @@ section .header:before {
   font-size: 20px;
   line-height: 1.4;
   color: #444;
-  margin: 2em 0 1em;
+  margin: 1em 0;
 }
 
 .content p {
@@ -224,6 +231,18 @@ section .header:before {
   text-decoration: underline;
 }
 
+.place img {
+  width: 100%;
+}
+
+.place h4 {
+  margin-top: 1em;
+}
+
+.content .place a:hover h4 {
+  color: #728AB6;
+}
+
 /* mobile screen sizes */
 @media (max-width: 960px) {
   .content h3 {
@@ -239,7 +258,6 @@ section .header:before {
     font-size: 12px;
   }
 }
-
 
 .photogrid > img {
   display: block;
