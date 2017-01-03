@@ -26,6 +26,12 @@ app.get('/', (request, response) => {
   })
 })
 
+app.get('/full', (request, response) => {
+  response.render('index2.html.ejs', {
+    //
+  })
+})
+
 app.get('/emoji', (request, response) => {
   response.render('emoji.html.ejs', { emoji: require('./emoji') })
 })
