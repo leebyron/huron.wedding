@@ -35,15 +35,28 @@ nav > div {
   max-width: 960px;
 }
 
+nav > div > a {
+  color: #444;
+  line-height: 20px;
+  margin: 0 0 0 -20px;
+}
+
 nav ul {
+  float: right;
   list-style-type: none;
   display: flex;
-  margin: 0 0 0 -20px;
+  margin: 0;
   padding: 0;
 }
 
 nav a {
-  color: #888;
+  font-family: WeissenhofGrotesk;
+  font-size: 14px;
+  font-weight: inherit;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #777;
   text-decoration: none;
   cursor: pointer;
   padding: 14px 20px;
@@ -59,9 +72,14 @@ nav a:hover {
     height: 44px;
   }
 
+  nav > div > a {
+    display: none;
+  }
+
   nav ul {
     margin: 0;
     justify-content: space-around;
+    float: none;
   }
 
   nav li {
@@ -70,9 +88,9 @@ nav a:hover {
 
   nav a {
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1;
-    padding: 16px 0;
+    padding: 17px 0 16px;
     text-align: center;
   }
 }
