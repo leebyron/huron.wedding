@@ -55,7 +55,7 @@ nav a:hover {
 
 @media (max-width: 960px) {
   nav {
-    padding: 12px 0 11px;
+    padding: 0;
     height: 44px;
   }
 
@@ -64,9 +64,16 @@ nav a:hover {
     justify-content: space-around;
   }
 
+  nav li {
+    flex-grow: 1;
+  }
+
   nav a {
-    padding: 10px;
+    display: block;
     font-size: 12px;
+    line-height: 1;
+    padding: 16px 0;
+    text-align: center;
   }
 }
 
