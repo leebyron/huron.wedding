@@ -30,17 +30,39 @@
 
       <div class="potatoes">
         <hr />
-        <ul>
-          <li><a href="#schedule">Schedule</a></li>
-          <li><a href="#location">Location</a></li>
-          <li><a href="#lodging">Lodging</a></li>
-          <li><a href="#guide">Travel Guide</a></li>
-          <li><a href="#wear">What to Wear</a></li>
-          <li><a href="#gifts">Gifts &amp; Registry</a></li>
-        </ul>
       </div>
     </div>
   </div>
+
+  <nav>
+    <div>
+      <ul>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#lodging">Lodging</a></li>
+        <li><a href="#guide">Guide</a></li>
+        <li><a href="#wear">Wear</a></li>
+        <li><a href="#gifts">Gifts</a></li>
+      </ul>
+    </div>
+  </nav>
+  <script type="text/javascript">
+    var nav = document.getElementsByTagName('nav')[0]
+    var pos = nav.offsetTop
+    var sticky = false;
+    window.addEventListener('resize', function () {
+      pos = nav.offsetTop
+    })
+    window.addEventListener('scroll', function () {
+      if (!sticky && window.scrollY > pos) {
+        nav.style.position = 'fixed'
+        sticky = true
+      } else if (sticky && window.scrollY < pos) {
+        nav.style.position = ''
+        sticky = false
+      }
+    })
+  </script>
 
   <section id="schedule">
     <div class="header">
@@ -75,7 +97,7 @@
       we really recommend exploring Palm Springs a little. Rent a scooter and
       see local mid-century architecture, ride the tramway over Chino Canyon,
       or visit retro shops along Palm Canyon Drive. We have a whole
-      <a href="#guide">travel guide</a> if you need&nbsp;ideas.</p>
+      <a href="#guide">travel guide</a> below if you need&nbsp;ideas.</p>
 
       <h4>Formal Feast</h4>
       <p class="meta">The Commune</p>
@@ -195,24 +217,21 @@
 
       <div class="columns">
         <div>
-          <img src="/photos/caliente-tropics.jpg" width="150" />
+          <img src="/photos/caliente-tropics.jpg" width="200" />
           <h4><a href="http://www.calientetropics.com/" target="_blank">
             Caliente Tropics Hotel</a></h4>
-          <p>Two blocks down the road, this Tiki-themed hotel is a little less expensive.</p>
         </div>
 
         <div>
-          <img src="/photos/desert-riviera.jpg" width="150" />
+          <img src="/photos/desert-riviera.jpg" width="200" />
           <h4><a href="http://desertrivierahotel.com/" target="_blank">
             Desert Riviera Hotel</a></h4>
-          <p>Just next door, this hotel is less stylish, but much quieter.</p>
         </div>
 
         <div>
-          <img src="/photos/motel6.jpg" width="150" />
+          <img src="/photos/motel6.jpg" width="200" />
           <h4><a href="https://www.motel6.com/en/motels.ca.palm-springs.9.html" target="_blank">
             Motel 6, Palm Springs East</a></h4>
-          <p>Just a block away, this standard motel is considerably less expensive.</p>
         </div>
       </div>
 
@@ -303,7 +322,7 @@
 
       <h3>Desert Formal Attire</h3>
       <p>For Friday's formal dinner, we expect you to look sharp. Dress Formal,
-      or "Black Tie Optional", but appropriate for the summer heat.</p>
+      but appropriate for the summer heat.</p>
 
       <div class="columns">
         <div>

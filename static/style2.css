@@ -10,6 +10,67 @@ body {
   align-items: center;
 }
 
+nav {
+  width: 100%;
+  background: white;
+  padding: 16px 0 14px;
+  height: 50px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.15),
+    0 1px 0 rgba(0,0,0,0.08);
+  top: 0;
+}
+
+nav:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+nav > div {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0 0 0 -20px;
+  padding: 0;
+}
+
+nav a {
+  color: #888;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 14px 20px;
+}
+
+nav a:hover {
+  color: #DCA497;
+}
+
+@media (max-width: 960px) {
+  nav {
+    padding: 12px 0 11px;
+    height: 44px;
+  }
+
+  nav ul {
+    margin: 0;
+    justify-content: space-around;
+  }
+
+  nav a {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+
 section {
   width: 100%;
   background: white;
@@ -44,7 +105,7 @@ section .header:before {
   background-image: linear-gradient( 135deg, rgba(114,138,182,.5), rgba(220,164,151,.65) );
 }
 
-@media (min-width: 920px) {
+@media (min-width: 960px) {
   section .header,
   section .header::before {
     background-attachment: fixed;
@@ -52,13 +113,13 @@ section .header:before {
 }
 
 .content {
-  width: 920px;
+  width: 960px;
   margin: 0 auto;
   padding: 2em 0 1em;
   position: relative;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 960px) {
   .content {
     width: auto;
     margin: 0 20px;
@@ -114,7 +175,7 @@ section .header:before {
   font-size: 20px;
   line-height: 1.4;
   color: #444;
-  max-width: 580px;
+  max-width: 600px;
 }
 
 .content .meta {
@@ -139,7 +200,7 @@ section .header:before {
 }
 
 /* mobile screen sizes */
-@media (max-width: 920px) {
+@media (max-width: 960px) {
   .content h3 {
     font-size: 16px;
   }
@@ -167,7 +228,7 @@ section .header:before {
   display: block;
 }
 
-@media (min-width: 920px) {
+@media (min-width: 960px) {
   .columns {
     display: flex;
   }
@@ -181,25 +242,19 @@ section .header:before {
     margin-right: 0;
   }
 
-  .columns:after {
-    content: '';
-    clear: both;
-    display: block;
-  }
-
   .photogrid {
     float: right;
     position: absolute;
     right: -40px;
     top: 7em;
-    width: 360px;
+    width: 340px;
   }
 }
 
 section .header .content h2,
 section .header .content p {
   color: white;
-  /*text-shadow: 0 1px 3px rgba(0,0,0,0.35);*/
+  text-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
 #schedule .header {
