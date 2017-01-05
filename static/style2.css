@@ -278,6 +278,52 @@ section .header:before {
   height: 100%;
 }
 
+.weather {
+  position: relative;
+}
+
+.weather .weather-glyph {
+  position: absolute;
+  top: 70px;
+  right: 290px;
+}
+
+.weather img {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: -4px;
+  left: 98px;
+  transition: all 0.4s ease-in-out;
+}
+
+.weather .high {
+  font-size: 75px;
+  position: absolute;
+  color: #DCA497;
+  transition: all 0.25s 0.1s ease-in-out;
+}
+
+.weather .low {
+  font-size: 35px;
+  position: absolute;
+  top: 76px;
+  left: 36px;
+  transition: all 0.19s 0.12s ease-in-out;
+}
+
+.weather-glyph:hover img {
+  transform: scale(1.25) rotate(16deg);
+}
+
+.weather-glyph:hover .high {
+  transform: translateX(-14px);
+}
+
+.weather-glyph:hover .low {
+  transform: translateX(-7px);
+}
+
 /* mobile screen sizes */
 @media (max-width: 960px) {
   .content h3 {
@@ -312,6 +358,14 @@ section .header:before {
   .map {
     width: calc(100% + 20px);
     height: 260px;
+  }
+
+  .weather .weather-glyph {
+    -moz-transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    top: 30px;
+    right: 125px;
   }
 }
 
