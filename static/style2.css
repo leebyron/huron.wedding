@@ -361,6 +361,13 @@ section .header .content p {
   text-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
+.map {
+  width: 485px;
+  height: 350px;
+  margin: 0 -10px;
+  pointer-events: none;
+}
+
 #wear img {
   margin: 0 -10px;
 }
