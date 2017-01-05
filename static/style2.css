@@ -265,6 +265,19 @@ section .header:before {
   text-shadow: 0 0 2px rgba(0,0,0,0.25);
 }
 
+.map {
+  width: 485px;
+  height: 350px;
+  margin: 0 -10px;
+  pointer-events: none;
+}
+
+.map > iframe {
+  width: 100%;
+  border: 0;
+  height: 100%;
+}
+
 /* mobile screen sizes */
 @media (max-width: 960px) {
   .content h3 {
@@ -294,6 +307,11 @@ section .header:before {
     content: '';
     clear: both;
     display: block;
+  }
+
+  .map {
+    width: 100%;
+    height: 260px;
   }
 }
 
@@ -359,13 +377,6 @@ section .header .content h2,
 section .header .content p {
   color: white;
   text-shadow: 0 1px 3px rgba(0,0,0,0.15);
-}
-
-.map {
-  width: 485px;
-  height: 350px;
-  margin: 0 -10px;
-  pointer-events: none;
 }
 
 #wear img {
