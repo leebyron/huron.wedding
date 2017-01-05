@@ -361,6 +361,18 @@ section .header .content p {
   text-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
+#wear img {
+  margin: 0 -10px;
+}
+
+@media (max-width: 960px) {
+  #wear img {
+    width: 100%;
+    width: calc(100% + 20px);
+    max-width: 485px;
+  }
+}
+
 #schedule .header {
   background-image: url(/photos/schedule.jpg);
 }
