@@ -310,7 +310,7 @@ section .header:before {
   }
 
   .map {
-    width: 100%;
+    width: calc(100% + 20px);
     height: 260px;
   }
 }
