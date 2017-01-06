@@ -467,6 +467,10 @@ section .header .content p {
 
 /* RSVP form */
 
+label {
+  display: block;
+}
+
 form input.attending-radio {
   display: none;
 }
@@ -478,4 +482,8 @@ form input.attending-radio + label {
 form input.attending-radio:checked + label {
   background: white;
   color: #DCA497;
+}
+
+fieldset {
+  text-align: left;
 }
