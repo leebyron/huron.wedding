@@ -1,4 +1,4 @@
-body {
+body.full {
   margin-bottom: 30vh;
   display: block;
 }
@@ -463,4 +463,19 @@ section .header .content p {
 
 #gifts .header {
   background-image: url(/photos/gifts.jpg);
+}
+
+/* RSVP form */
+
+form input.attending-radio {
+  display: none;
+}
+
+form input.attending-radio + label {
+  cursor: pointer;
+}
+
+form input.attending-radio:checked + label {
+  background: white;
+  color: #DCA497;
 }

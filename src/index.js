@@ -32,6 +32,19 @@ app.get('/full', (request, response) => {
   })
 })
 
+app.get('/full/rsvp', async (request, response) => {
+  // TODO: pgQuery, then:
+
+  const rows = [
+    { firstname: 'Lee', lastname: 'Byron', partyname: 'Lee + Ash' },
+    { firstname: 'Ash', lastname: 'Huang', partyname: 'Lee + Ash' },
+  ];
+
+  const partyname = rows[0].partyname;
+
+  response.render('rsvp.html.ejs', { partyname, rows })
+})
+
 app.get('/emoji', (request, response) => {
   response.render('emoji.html.ejs', { emoji: require('./emoji') })
 })

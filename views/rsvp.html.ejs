@@ -1,0 +1,126 @@
+<html>
+<head>
+  <% include partials/meta.html.ejs %>
+  <link rel="stylesheet" href="/style2.css" />
+</head>
+<body onload="document.body.setAttribute('class','loaded')">
+  <div id="bgImage"></div>
+  <script>
+    var img = new Image()
+    img.src = '/web.jpg'
+    img.onload = function () {
+      document.getElementById('bgImage').style.backgroundImage = 'url(/web.jpg)';
+    }
+  </script>
+
+  <div class="meat">
+    <div class="headline">
+      <h1>Lee + Ash</h1>
+      <h2>are getting married</h2>
+    </div>
+
+    <div class="headline">
+      <h3>May 5&ndash;7, 2017</h3>
+      <h3>Ace Hotel<br />Palm Springs, California</h3>
+    </div>
+
+    <div class="potatoes">
+      <hr />
+
+      <p>Hi <%= rows[0].partyname || rows[0].firstname %>, <br />we're so excited to celebrate with you. Will you be there?</p>
+
+      <form method="post" action="/<%= rows[0].emoji %>/rsvp" onsubmit="return validateForm(this)">
+
+        <input class="attending-radio" id="attending-yes" type="radio" name="attending" value="yes" onchange="updateAttendance(this.form)" />
+        <label for="attending-yes">
+          I'll be there!
+        </label>
+
+        <input class="attending-radio" type="radio" id="attending-no" name="attending" value="no" onchange="updateAttendance(this.form)" />
+        <label for="attending-no">
+          Sadly, I can't attend.
+        </label>
+
+        <div id="attending-no-form" style="display: none;">
+          <p>We're sorry to hear that. Hopefully we'll see each other another time soon.</p>
+
+          <label>
+            Anything else?
+            <textarea></textarea>
+          </label>
+        </div>
+
+        <div id="attending-yes-form" style="display: none;">
+          <p>We can't wait to see you!</p>
+
+          <p>
+            Which events will you be attending?<br />
+            (Check all that apply for everyone in your party.)
+          </p>
+
+          <% rows.forEach(({ firstname, lastname }) => { %>
+            <fieldset>
+              <legend><%= firstname %> <%= lastname %></legend>
+              <label>
+                <input type="checkbox" name="early-bird-<%= firstname %>" />
+                Early Bird Happy Hour
+              </label>
+              <label>
+                <input type="checkbox" name="formal-feast-<%= firstname %>" checked />
+                Formal Feast
+              </label>
+              <label>
+                <input type="checkbox" name="pool-party-<%= firstname %>" checked />
+                Pool Party
+              </label>
+              <label>
+                <input type="checkbox" name="ceremony-<%= firstname %>" checked />
+                Ceremony &amp; Reception
+              </label>
+            </fieldset>
+          <% }) %>
+
+          <label>
+            Will you be bringing anyone?
+            <textarea placeholder="Please include their full name"></textarea>
+          </label>
+
+          <label>
+            Will you be bringing any kids?
+            <textarea placeholder="Please include their full names and if they will be joining the events"></textarea>
+          </label>
+
+          <label>
+            Anything else?
+            <textarea></textarea>
+          </label>
+        </div>
+
+        <input id="submit-button" type="submit" value="Send your reply" style="display: none;" />
+        <script>
+          function validateForm(form) {
+            return (
+              form.address.value.length >= 3 &&
+              form.city.value.length >= 2 &&
+              form.state.value.length >= 2 &&
+              /^\s*[0-9-]{3,}\s*$/.test(form.zip.value)
+            )
+          }
+
+          function updateAttendance(form) {
+            document.getElementById('attending-yes-form').style.display =
+              form.attending.value === 'yes' ? 'block' : 'none';
+            document.getElementById('attending-no-form').style.display =
+              form.attending.value === 'no' ? 'block' : 'none';
+
+            document.getElementById('submit-button').style.display =
+              form.attending.value !== '' ? 'block' : 'none';
+          }
+        </script>
+      </form>
+    </div>
+  </div>
+
+  <% include partials/analytics.html.ejs %>
+</body>
+<html>

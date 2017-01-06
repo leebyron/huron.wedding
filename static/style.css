@@ -113,7 +113,11 @@ body {
   min-height: 410px;
 }
 
-.potatoes form input {
+.potatoes form input[type="text"],
+.potatoes form input[type="tel"],
+.potatoes form input[type="submit"],
+.potatoes form input[type="radio"] + label,
+.potatoes form textarea {
   font-family: WeissenhofGrotesk;
   font-size: 17px;
   line-height: 22px;
