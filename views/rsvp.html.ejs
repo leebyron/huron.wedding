@@ -58,6 +58,8 @@
             (Check all that apply for everyone in your party.)
           </p>
 
+          <!-- TODO: if there is only one row, no need to mention "party" above, and
+               no need to list each name below -->
           <% rows.forEach(({ firstname, lastname }) => { %>
             <fieldset>
               <legend><%= firstname %> <%= lastname %></legend>

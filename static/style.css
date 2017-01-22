@@ -227,9 +227,9 @@ body.loaded .headline {
 }
 
 body.loaded .details {
-  -webkit-animation: give-em-deets 0.5s ease-in-out 1.1s;
-  -moz-animation: give-em-deets 0.5s ease-in-out 1.1s;
-  animation: give-em-deets 0.5s ease-in-out 1.1s;
+  -webkit-animation: give-em-deets 0.5s ease-in-out 0.5s;
+  -moz-animation: give-em-deets 0.5s ease-in-out 0.5s;
+  animation: give-em-deets 0.5s ease-in-out 0.5s;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
