@@ -7,6 +7,18 @@ body.full {
   min-height: 85vh;
   display: flex;
   align-items: center;
+
+  position: relative;
+
+  background: #444;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  background-image: url(/photos/splash.jpg);
 }
 
 .main .meat {
@@ -151,6 +163,7 @@ section .header {
   background-size: cover;
 }
 
+.main::before,
 section .header:before {
   content: ' ';
   position: absolute;
@@ -162,6 +175,8 @@ section .header:before {
 }
 
 @media (min-width: 961px) {
+  .main,
+  .main::before,
   section .header,
   section .header::before {
     background-attachment: fixed;
@@ -491,6 +506,10 @@ section .header .content p {
 
 #guide .header {
   background-image: url(/photos/guide.jpg);
+}
+
+#wear .header {
+  background-image: url(/photos/wear.jpg);
 }
 
 #gifts .header {
