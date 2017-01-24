@@ -272,6 +272,7 @@ section .header:before {
 .place img {
   width: 100%;
   min-height: 80px;
+  max-height: 200px;
   background: #444;
 
   -moz-transition: all 0.35s;
