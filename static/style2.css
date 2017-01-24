@@ -18,7 +18,8 @@ body.full {
   -o-background-size: cover;
   background-size: cover;
 
-  background-image: url(/photos/splash.jpg);
+  -webkit-transition: background-image 0.4s ease-in-out;
+  transition: background-image 0.4s ease-in-out;
 }
 
 .main .meat {
