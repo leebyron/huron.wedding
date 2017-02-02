@@ -44,15 +44,26 @@ body.full {
   top: 0;
 }
 
+a {
+  color: #728AB6;
+}
+
+a:visited {
+  color: #DCA497;
+}
+
 footer {
   background: white;
   text-align: center;
+  color: #999;
+  font-size: 80%;
+  margin: 4em 0 2em;
 }
 
 footer .end-circle {
   width: 160px;
   fill: url(#warmombre);
-  margin: 4em auto 2em;
+  margin: 1em auto;
 }
 
 nav {
@@ -94,7 +105,8 @@ nav ul {
   padding: 0;
 }
 
-nav a {
+nav a,
+nav a:visited {
   font-family: WeissenhofGrotesk;
   font-size: 14px;
   font-weight: inherit;
