@@ -1,0 +1,35 @@
+<html>
+<head>
+  <% include partials/meta.html.ejs %>
+</head>
+<body onload="document.body.setAttribute('class','loaded')">
+  <div id="bgImage"></div>
+  <script>
+    var img = new Image()
+    img.src = '/web.jpg'
+    img.onload = function () {
+      document.getElementById('bgImage').style.backgroundImage = 'url(/web.jpg)';
+    }
+  </script>
+
+  <div class="meat">
+    <div class="headline">
+      <h1>Lee + Ash</h1>
+      <h2>are getting married</h2>
+    </div>
+
+    <div class="details">
+      <h3>May 5&ndash;7, 2017</h3>
+      <h3>Palm Springs, California</h3>
+    </div>
+
+    <div class="potatoes">
+      <hr />
+
+      <p><%= message %></p>
+    </div>
+  </div>
+
+  <% include partials/analytics.html.ejs %>
+</body>
+<html>

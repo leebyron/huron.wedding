@@ -21,15 +21,11 @@ app.use(express.static(__dirname + '/../static', { maxAge: 3600 }))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (request, response) => {
-  response.render('index.html.ejs', {
-    message: 'Check your email and stay tuned'
-  })
+  response.render('index.html.ejs')
 })
 
 app.get('/full', (request, response) => {
-  response.render('index2.html.ejs', {
-    //
-  })
+  return response.redirect(303, '/');
 })
 
 app.get('/full/rsvp', async (request, response) => {
