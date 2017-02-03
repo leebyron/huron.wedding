@@ -621,23 +621,27 @@ section .header .content p {
   display: inline;
 }
 
-.rsvp .event-rsvp label {
+.rsvp .event-rsvp label,
+.rsvp .party-members label {
   padding-left: 24px;
   position: relative;
 }
 
-.rsvp .event-rsvp input[type="checkbox"] {
+.rsvp .event-rsvp input[type="checkbox"],
+.rsvp .party-members input[type="checkbox"] {
   position: absolute;
   left: 0;
   margin: 8px 4px;
 }
 
 @media (min-width: 760px) {
-  .rsvp .event-rsvp label {
+  .rsvp .event-rsvp label,
+  .rsvp .party-members label {
     padding-left: 0;
   }
 
-  .rsvp .event-rsvp input[type="checkbox"] {
+  .rsvp .event-rsvp input[type="checkbox"],
+  .rsvp .party-members input[type="checkbox"] {
     height: 18px;
     left: -28px;
     margin: 4px;

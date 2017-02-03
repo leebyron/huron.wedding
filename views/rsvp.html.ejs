@@ -162,6 +162,20 @@
         <div class="other-questions" id="attending-yes-form" style="display: none;">
           <h4>We can't wait to see you!</h4>
 
+          <% if (rows.length > 1) { %>
+          <div class="party-members">
+            <p>Who all is attending?</p>
+            <% rows.forEach(row => { %>
+            <label>
+              <input type="checkbox" name="party[<%= row.firstname %> <%= row.lastname %>]" checked />
+              <h4><%= row.firstname %> <%= row.lastname %></h4>
+            </label>
+            <% }) %>
+          </div>
+          <% } else { %>
+          <input type="hidden" name="party[<%= firstname %> <%= lastname %>]" value="on" />
+          <% } %>
+
           <p>
             Which events will you be attending?
           </p>
@@ -198,7 +212,7 @@
             </label>
           </div>
 
-          <% if (inviteeCount === 1) { %>
+          <% if (rows.length === 1) { %>
           <label>
             Will you be bringing anyone?
             <textarea name="plus-one" placeholder="Please include their full name."></textarea>

@@ -114,6 +114,7 @@ body {
 }
 
 form label {
+  color: #444;
   font-family: "ff-spinoza-web-pro";
   font-size: 20px;
   font-weight: 400;
@@ -122,6 +123,7 @@ form label {
 }
 
 form textarea {
+  color: #444;
   box-sizing: border-box;
   display: block;
   font-family: "ff-spinoza-web-pro";
@@ -141,6 +143,7 @@ form input + label {
   background: transparent;
   border: solid 1px rgba(255,255,255,0.65);
   box-sizing: border-box;
+  color: #444;
   display: block;
   font-family: WeissenhofGrotesk;
   font-size: 20px;

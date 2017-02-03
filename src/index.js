@@ -52,15 +52,14 @@ app.get('/:emoji', async (request, response) => {
 
   // Enable the below to collect RSVPs
   const { rows } = await pgQuery(
-    'SELECT firstname, partyname, rsvptime FROM invitees WHERE emoji = $1::text',
+    'SELECT firstname, lastname, partyname, rsvptime FROM invitees WHERE emoji = $1::text',
     [ emoji ]
   )
-  const inviteeCount = rows.length
-  if (inviteeCount === 0) {
+  if (rows.length === 0) {
     return response.redirect(303, '/')
   }
-  const { firstname, partyname, rsvptime } = rows[0]
-  response.render('rsvp.html.ejs', { firstname, partyname, emoji, inviteeCount, rsvptime })
+  const { firstname, lastname, partyname, rsvptime } = rows[0]
+  response.render('rsvp.html.ejs', { firstname, lastname, partyname, emoji, rows, rsvptime })
 })
 
 app.post('/:emoji/rsvp', async (request, response) => {
@@ -71,6 +70,7 @@ app.post('/:emoji/rsvp', async (request, response) => {
     message: trim(request.body.noMessage),
   } : {
     attending: true,
+    party: request.body.party && Object.keys(request.body.party),
     earlyBird: Boolean(request.body.earlyBird),
     formalFeast: Boolean(request.body.formalFeast),
     poolParty: Boolean(request.body.poolParty),
