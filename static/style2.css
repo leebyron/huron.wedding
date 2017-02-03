@@ -23,8 +23,21 @@ body.rsvp {
   transition: background-image 0.4s ease-in-out;
 }
 
-.rsvp .main {
-  min-height: 30vh;
+.rsvp .meat {
+  margin: 2em auto 0;
+}
+
+.rsvp-circle {
+  width: 200px;
+  max-width: 100%;
+  fill: url(#warmombre);
+  margin: 1em auto 0;
+}
+
+@media (min-width: 640px) {
+  .rsvp-circle {
+    width: 300px;
+  }
 }
 
 .main .meat {
@@ -554,16 +567,15 @@ section .header .content p {
 
 /* RSVP form */
 
-@media (min-width: 960px) {
-  .rsvp section .content {
-    width: 460px;
-  }
-}
-
 .rsvp .rsvp-meat-link,
 .rsvp .rsvp-meat-link:visited {
   display: block;
   color: white;
+}
+
+.rsvp form {
+  margin: -1em 0;
+  padding: 1em 0;
 }
 
 .rsvp label {
@@ -634,7 +646,11 @@ section .header .content p {
   margin: 8px 4px;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 960px) {
+  .rsvp section .content {
+    width: 460px;
+  }
+
   .rsvp .event-rsvp label,
   .rsvp .party-members label {
     padding-left: 0;
