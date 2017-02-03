@@ -26,13 +26,13 @@ interactive(async (say, ask) => {
 
   const content = await Promise.all(groups.map(async rows => {
     const [ html, text ] = await Promise.all([
-      renderView('email/save-the-date.html.ejs', rows[0]),
-      renderView('email/save-the-date.txt.ejs', rows[0])
+      renderView('email/rsvp.html.ejs', rows[0]),
+      renderView('email/rsvp.txt.ejs', rows[0])
     ])
     return { rows, html, text }
   }))
 
-  const subject = 'Save the date!'
+  const subject = 'Lee + Ash: RSVP!'
   say('SUBJECT: ' + subject)
 
   if (await ask('do you want to see the html template? ', 'Yn')) {
@@ -55,7 +55,7 @@ interactive(async (say, ask) => {
     Subject: subject,
     TextBody: text,
     HtmlBody: html,
-    Tag: 'save-the-date',
+    Tag: 'rsvp',
     TrackOpens: true
   }))
 
