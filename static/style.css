@@ -225,7 +225,7 @@ form button {
   opacity: 0;
 }
 
-body.loaded .headline {
+body .headline {
   -webkit-animation: let-em-know 1.2s ease-in-out;
   -moz-animation: let-em-know 1.2s ease-in-out;
   animation: let-em-know 1.2s ease-in-out;
@@ -234,7 +234,7 @@ body.loaded .headline {
   animation-fill-mode: forwards;
 }
 
-body.loaded .details {
+body .details {
   -webkit-animation: give-em-deets 0.5s ease-in-out 0.5s;
   -moz-animation: give-em-deets 0.5s ease-in-out 0.5s;
   animation: give-em-deets 0.5s ease-in-out 0.5s;
@@ -243,7 +243,7 @@ body.loaded .details {
   animation-fill-mode: forwards;
 }
 
-body.loaded .potatoes {
+body .potatoes {
   -webkit-animation: serve-up-grub 0.6s ease-in-out 1.25s;
   -moz-animation: serve-up-grub 0.6s ease-in-out 1.25s;
   animation: serve-up-grub 0.6s ease-in-out 1.25s;
