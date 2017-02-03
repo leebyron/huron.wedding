@@ -1,4 +1,5 @@
-body.full {
+body.full,
+body.rsvp {
   display: block;
 }
 
@@ -22,6 +23,10 @@ body.full {
   transition: background-image 0.4s ease-in-out;
 }
 
+.rsvp .main {
+  min-height: 30vh;
+}
+
 .main .meat {
   position: relative;
   width: inherit;
@@ -31,6 +36,10 @@ body.full {
   fill: #fff;
   width: 380px;
   max-width: 100%;
+}
+
+.rsvp .top-circle {
+  width: 320px;
 }
 
 .main .details {
@@ -194,19 +203,23 @@ section .header:before {
   section .header::before {
     background-attachment: fixed;
   }
+
+  .rsvp .main {
+    background-attachment: initial;
+  }
 }
 
 .content {
-  width: 960px;
-  margin: 0 auto;
-  padding: 2em 0 1em;
-  position: relative;
+  width: auto;
+  margin: 0 20px;
 }
 
-@media (max-width: 960px) {
+@media (min-width: 960px) {
   .content {
-    width: auto;
-    margin: 0 20px;
+    width: 960px;
+    margin: 0 auto;
+    padding: 2em 0 1em;
+    position: relative;
   }
 }
 
@@ -394,7 +407,10 @@ section .header:before {
   }
 
   .content h4,
-  .content p {
+  .content p,
+  form input,
+  form label,
+  form textarea {
     font-size: 18px;
   }
 
@@ -538,23 +554,88 @@ section .header .content p {
 
 /* RSVP form */
 
-label {
+@media (min-width: 960px) {
+  .rsvp section .content {
+    width: 460px;
+  }
+}
+
+.rsvp label {
   display: block;
 }
 
-form input.attending-radio {
+.rsvp form input.attending-radio {
   display: none;
 }
 
-form input.attending-radio + label {
+.rsvp form input.attending-radio + label,
+.rsvp input[type="submit"] {
+  margin-bottom: 10px;
+  padding: 16px;
+  text-align: center;
   cursor: pointer;
+  border: solid 5px #DCA497;
+  border-image: linear-gradient(to right, #DCA497, #728AB6) 1 1 stretch;
 }
 
-form input.attending-radio:checked + label {
-  background: white;
-  color: #DCA497;
+.rsvp form input.attending-radio:checked ~ label {
+  color: #aaa;
+  border-image: none;
+  border-color: #ccc;
 }
 
-fieldset {
+.rsvp form input.attending-radio:checked + label,
+.rsvp input[type="submit"]:active {
+  color: white;
+  background-image: linear-gradient(to right, #DCA497, #728AB6);
+  border-image: linear-gradient(to right, #DCA497, #728AB6) 1 1 stretch;
+}
+
+.rsvp fieldset {
   text-align: left;
+}
+
+.rsvp .other-questions {
+  margin-top: 2em;
+}
+
+.rsvp textarea {
+  border: solid 1px #666;
+}
+
+.rsvp .event-rsvp {
+  margin: 1em 0 2em;
+}
+
+.rsvp .event-rsvp h3 {
+  margin: 1em 0 0;
+}
+
+.rsvp .event-rsvp h4 {
+  display: inline;
+}
+
+.rsvp .event-rsvp label {
+  padding-left: 24px;
+  position: relative;
+}
+
+.rsvp .event-rsvp input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  margin: 8px 4px;
+}
+
+@media (min-width: 760px) {
+  .rsvp .event-rsvp label {
+    padding-left: 0;
+  }
+
+  .rsvp .event-rsvp input[type="checkbox"] {
+    height: 18px;
+    left: -28px;
+    margin: 4px;
+    width: 18px;
+    zoom: 1.1;
+  }
 }

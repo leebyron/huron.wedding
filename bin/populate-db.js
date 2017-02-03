@@ -25,7 +25,10 @@ interactive(async (say, ask) => {
       email                 text,
       -- Full mailing address
       addressProvidedTime   timestamptz,
-      address               json
+      address               json,
+      -- RSVP details
+      rsvpTime              timestamptz,
+      rsvp                  json
     );`
   )
 

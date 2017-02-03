@@ -25,20 +25,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/full', (request, response) => {
-  return response.redirect(303, '/');
-})
-
-app.get('/full/rsvp', async (request, response) => {
-  // TODO: pgQuery, then:
-
-  const rows = [
-    { firstname: 'Lee', lastname: 'Byron', partyname: 'Lee + Ash' },
-    { firstname: 'Ash', lastname: 'Huang', partyname: 'Lee + Ash' },
-  ];
-
-  const partyname = rows[0].partyname;
-
-  response.render('rsvp.html.ejs', { partyname, rows })
+  return response.redirect(303, '/')
 })
 
 app.get('/emoji', (request, response) => {
@@ -47,19 +34,58 @@ app.get('/emoji', (request, response) => {
 
 app.get('/:emoji', async (request, response) => {
   const emoji = request.params.emoji
+
+  // Enable the below to collect addresses
+  // const { rows } = await pgQuery(
+  //   'SELECT firstname, partyname, addressprovidedtime FROM invitees WHERE emoji = $1::text',
+  //   [ emoji ]
+  // )
+  // if (rows.length === 0) {
+  //   return response.redirect(303, '/')
+  // }
+  // const { firstname, partyname, addressprovidedtime } = rows[0]
+  // if (addressprovidedtime) {
+  //   response.render('thanks.html.ejs', { firstname, partyname })
+  // } else {
+  //   response.render('form.html.ejs', { firstname, partyname, emoji })
+  // }
+
+  // Enable the below to collect RSVPs
   const { rows } = await pgQuery(
-    'SELECT firstname, partyname, addressprovidedtime FROM invitees WHERE emoji = $1::text',
+    'SELECT firstname, partyname, rsvptime FROM invitees WHERE emoji = $1::text',
     [ emoji ]
   )
-  if (rows.length === 0) {
+  const inviteeCount = rows.length
+  if (inviteeCount === 0) {
     return response.redirect(303, '/')
   }
-  const { firstname, partyname, addressprovidedtime } = rows[0]
-  if (addressprovidedtime) {
-    response.render('thanks.html.ejs', { firstname, partyname })
-  } else {
-    response.render('form.html.ejs', { firstname, partyname, emoji })
+  const { firstname, partyname, rsvptime } = rows[0]
+  response.render('rsvp.html.ejs', { firstname, partyname, emoji, inviteeCount, rsvptime })
+})
+
+app.post('/:emoji/rsvp', async (request, response) => {
+  const emoji = request.params.emoji
+
+  const rsvp = request.body.attending === 'no' ? {
+    attending: false,
+    message: trim(request.body.noMessage),
+  } : {
+    attending: true,
+    earlyBird: Boolean(request.body.earlyBird),
+    formalFeast: Boolean(request.body.formalFeast),
+    poolParty: Boolean(request.body.poolParty),
+    ceremony: Boolean(request.body.ceremony),
+    kids: trim(request.body.kids),
+    diet: trim(request.body.diet),
+    message: trim(request.body.yesMessage),
   }
+
+  await pgQuery(
+    'UPDATE invitees SET rsvp = $2::json, rsvptime = now() WHERE emoji = $1::text',
+    [ emoji, rsvp ]
+  )
+
+  response.redirect(303, '/')
 })
 
 app.post('/:emoji/updateaddress', async (request, response) => {
