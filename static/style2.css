@@ -560,6 +560,12 @@ section .header .content p {
   }
 }
 
+.rsvp .rsvp-meat-link,
+.rsvp .rsvp-meat-link:visited {
+  display: block;
+  color: white;
+}
+
 .rsvp label {
   display: block;
 }
