@@ -223,6 +223,7 @@ section .header:before {
 }
 
 .content {
+  position: relative;
   width: auto;
   margin: 0 20px;
 }
@@ -232,7 +233,6 @@ section .header:before {
     width: 960px;
     margin: 0 auto;
     padding: 2em 0 1em;
-    position: relative;
   }
 }
 
