@@ -13,8 +13,27 @@ const pgQuery = require('../src/pgQuery')
 const renderView = require('../src/renderView')
 const { sendMailBatch } = require('../src/sendMail')
 
+// To only send email to specific ids:
+// Optionally add --id 25 or --ids 12,34,56
+let ids
+let i = 2
+while (i < process.argv.length) {
+  var arg = process.argv[i++]
+  if (arg === '-id' || arg === '--ids') {
+    ids = process.argv[i++].split(',').map(id => parseInt(id, 10))
+    ids.forEach(id => {
+      if (isNaN(id) {
+        throw new Error('Unknown id ' + id)
+      })
+    })
+  }
+}
+
 interactive(async (say, ask) => {
-  const { rows } = await pgQuery('SELECT firstname, lastname, partyname, email, emoji FROM invitees')
+  const { rows } = await pgQuery(
+    'SELECT firstname, lastname, partyname, email, emoji FROM invitees' +
+    (ids ? ' WHERE id IN (' + ids.join(', ') + ')' : '')
+  )
 
   const groupMap = Object.create(null)
   rows.forEach(row => {
@@ -65,6 +84,6 @@ interactive(async (say, ask) => {
     return say('cancelling')
   }
 
-  await sendMailBatch(emails)
+  console.log(await sendMailBatch(emails))
   say('all mail has been sent')
 })
