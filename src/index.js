@@ -71,7 +71,7 @@ app.post('/:emoji/rsvp', async (request, response) => {
   } : {
     attending: true,
     party: request.body.party && Object.keys(request.body.party),
-    plusOne: trim(request.body['plus-one']),
+    plusOne: trim(request.body.plusOne),
     earlyBird: Boolean(request.body.earlyBird),
     formalFeast: Boolean(request.body.formalFeast),
     poolParty: Boolean(request.body.poolParty),
