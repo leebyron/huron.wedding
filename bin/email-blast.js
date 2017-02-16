@@ -19,12 +19,12 @@ let ids
 let i = 2
 while (i < process.argv.length) {
   var arg = process.argv[i++]
-  if (arg === '-id' || arg === '--ids') {
+  if (arg === '--id' || arg === '--ids') {
     ids = process.argv[i++].split(',').map(id => parseInt(id, 10))
     ids.forEach(id => {
-      if (isNaN(id) {
+      if (isNaN(id)) {
         throw new Error('Unknown id ' + id)
-      })
+      }
     })
   }
 }
