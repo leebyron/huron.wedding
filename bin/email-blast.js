@@ -45,13 +45,13 @@ interactive(async (say, ask) => {
 
   const content = await Promise.all(groups.map(async rows => {
     const [ html, text ] = await Promise.all([
-      renderView('email/rsvp.html.ejs', rows[0]),
-      renderView('email/rsvp.txt.ejs', rows[0])
+      renderView('email/rsvp-reminder.html.ejs', rows[0]),
+      renderView('email/rsvp-reminder.txt.ejs', rows[0])
     ])
     return { rows, html, text }
   }))
 
-  const subject = 'Lee + Ash: RSVP!'
+  const subject = 'Action Required: RSVP to Lee + Ash'
   say('SUBJECT: ' + subject)
 
   if (await ask('do you want to see the html template? ', 'Yn')) {
@@ -74,7 +74,7 @@ interactive(async (say, ask) => {
     Subject: subject,
     TextBody: text,
     HtmlBody: html,
-    Tag: 'rsvp',
+    Tag: 'rsvp-reminder',
     TrackOpens: true
   }))
 
