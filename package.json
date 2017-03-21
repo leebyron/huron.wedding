@@ -15,6 +15,7 @@
   "bin": {
     "email-blast": "bin/email-blast.js",
     "get-addresses": "bin/get-addresses.js",
+    "get-rsvps": "bin/get-rsvps.js",
     "reminder-blast": "bin/reminder-blast.js",
     "populate-db": "bin/populate-db.js"
   },
