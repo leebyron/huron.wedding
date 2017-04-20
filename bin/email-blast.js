@@ -32,7 +32,9 @@ while (i < process.argv.length) {
 interactive(async (say, ask) => {
   const { rows } = await pgQuery(
     'SELECT firstname, lastname, partyname, email, emoji FROM invitees' +
-    (ids ? ' WHERE id IN (' + ids.join(', ') + ')' : '')
+    (ids ?
+      ' WHERE id IN (' + ids.join(', ') + ')' :
+      " WHERE rsvp->>'attending'='true'")
   )
 
   const groupMap = Object.create(null)
@@ -45,13 +47,13 @@ interactive(async (say, ask) => {
 
   const content = await Promise.all(groups.map(async rows => {
     const [ html, text ] = await Promise.all([
-      renderView('email/rsvp-reminder.html.ejs', rows[0]),
-      renderView('email/rsvp-reminder.txt.ejs', rows[0])
+      renderView('email/two-weeks-away.html.ejs', rows[0]),
+      renderView('email/two-weeks-away.txt.ejs', rows[0])
     ])
     return { rows, html, text }
   }))
 
-  const subject = 'Action Required: RSVP to Lee + Ash'
+  const subject = 'Lee + Ash: Two weeks away!'
   say('SUBJECT: ' + subject)
 
   if (await ask('do you want to see the html template? ', 'Yn')) {
