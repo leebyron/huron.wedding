@@ -16,6 +16,8 @@ const { sendMailBatch } = require('../src/sendMail')
 // To only send email to specific ids:
 // Optionally add --id 25 or --ids 12,34,56
 let ids
+let subject;
+let template;
 let i = 2
 while (i < process.argv.length) {
   var arg = process.argv[i++]
@@ -26,10 +28,21 @@ while (i < process.argv.length) {
         throw new Error('Unknown id ' + id)
       }
     })
+  } else if (arg === '--subject') {
+    subject = process.argv[i++]
+  } else if (arg === '--template') {
+    template = process.argv[i++]
   }
 }
 
 interactive(async (say, ask) => {
+  if (!subject || !template) {
+    return say(
+      'Must pass --subject and --template. Example:\n' +
+      'email-blast --subject "Lee + Ash: Something" --template wed-night'
+    );
+  }
+
   const { rows } = await pgQuery(
     'SELECT firstname, lastname, partyname, email, emoji FROM invitees' +
     (ids ?
@@ -47,13 +60,12 @@ interactive(async (say, ask) => {
 
   const content = await Promise.all(groups.map(async rows => {
     const [ html, text ] = await Promise.all([
-      renderView('email/two-weeks-away.html.ejs', rows[0]),
-      renderView('email/two-weeks-away.txt.ejs', rows[0])
+      renderView('email/' + template + '.html.ejs', rows[0]),
+      renderView('email/' + template + '.txt.ejs', rows[0])
     ])
     return { rows, html, text }
   }))
 
-  const subject = 'Lee + Ash: Two weeks away!'
   say('SUBJECT: ' + subject)
 
   if (await ask('do you want to see the html template? ', 'Yn')) {
